@@ -1,0 +1,82 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+        <div class="inv">
+            <!-- confirm booking window -->
+            <h4>Booking Confirmation</h4>
+        </div>
+        <form action="#" method="post">
+        <div class="inv">
+            <!-- form holder -->
+<!--            form holder-->
+            <div class="inv">
+                <!-- movie -->
+                🎬 Movie:
+                <br>{{myshow[1]}}
+<!--                <br>data will be picked from input list and put here-->
+            </div>
+            <div class="inv">
+
+                🎪 Venue:
+                <br> &nbsp&nbsp{{myshow[2]}}
+            </div>
+            <div class="inv">
+                <!-- left seats -->
+                📋 Available Seats:
+                <br> &nbsp&nbsp{{myshow[5]}}
+<!--                <br>data will be picked from input list and put here-->
+            </div>
+            <div class="inv">
+                <!-- number booked -->
+                <p>🎫 Tickets :</p>
+                 &nbsp&nbsp<input type="number" value="0" name="tickets" min="1" max={{myshow[5]}}>
+<!--                <br>this numbers max will be determined using the total number of available seats left-->
+            </div>
+            <div class="inv">
+                <!-- per seat price -->
+                💲 Per Seat Price:
+                <br> &nbsp&nbsp ₹{{curr_cost}}
+<!--                <br>data will be picked from input list and put here-->
+            </div>
+            <div name="tots" class="inv">
+                <!-- total price -->
+                💰 Total Price:
+<!--                <br>this needs to alter on the spot as per the change in the number of seats selected-->
+            </div>
+            <div class="inv">
+                    <!-- Confirm -->
+                    <input type="submit" value="🤟 Confirm"/>
+
+            </div>
+
+
+        </div>
+        </form>
+
+
+        
+    </div>
+<script>
+const entity1Input = document.getElementsByName('tickets')[0];
+const entity2Input = document.getElementsByName('tots')[0];
+// console.log(entity1Input.value)
+// console.log(entity2Input)
+
+entity1Input.addEventListener('input', (event) => {
+    // entity2Input.innerText = event.target.input;
+    // console.log(entity1Input.value)
+    entity2Input.innerHTML= '💰 Total Price:<br> &nbsp&nbsp ₹'+  (entity1Input.value)* {{curr_cost}}
+
+});
+
+</script>
+{% endblock %}
+
+

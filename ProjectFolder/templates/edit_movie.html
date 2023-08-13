@@ -1,0 +1,119 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+
+        <div class="inv">
+            <!-- New Movie Title -->
+            <h4>Edit Movie Details:</h4>
+        </div>
+        <form action="#" enctype="multipart/form-data" method="post">
+        <div class="inv">
+            <!-- All options  -->
+            
+            <div class="inv">
+                <!-- movie name -->
+                <p>Name:</p>
+                <input type="text" name="mnam" value="{{mymov[1]}}" required/>
+            </div>
+            <div class="inv">
+                <!-- Genre  -->
+                <p>Genre:</p>
+
+                  <input list="genres" name="genres" value="{{mymov[2]}}" required>
+                  <datalist id="genres">
+                    <option value="Action">
+                    <option value="Adventure">
+                    <option value="Drama">
+                    <option value="Romcom">
+                    <option value="Thriller">
+                    <option value="Horror">
+                    <option value="Comedy">
+                    <option value="Sci-Fi">
+                    <option value="Mystery">
+
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Rating  -->
+                <p>Rating (/10):</p>
+                <input type="number" name="rating" min="1" max="10" value="{{mymov[3]}}" required>
+            </div>
+            <div class="inv">
+                <!-- Tags dropdown -->
+                <p>Tags:</p>
+                <input list="tags" name="tags" value="{{mymov[4]}}" required>
+                  <datalist id="tags">
+                    <option value="Family">
+                    <option value="Pg13">
+                    <option value="R rated">
+                    <option value="Anime">
+                    <option value="Animation">
+                    <option value="Art Film">
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Lang  -->
+                <p>Language:</p>
+                <input list="lang" name="lang" value="{{mymov[5]}}" required>
+                  <datalist id="lang">
+                    <option value="English">
+                    <option value="Hindi">
+                    <option value="Marathi">
+                    <option value="French">
+                    <option value="Japanese">
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Price  -->
+                <p>Price:</p>
+                <input type="number" name="price" min="0" value="{{mymov[6]}}" required>
+            </div>
+            <div class="inv">
+                <!-- Photo  -->
+                <p>Photo: (Optional)</p>
+<!--                <input type="file" name="image" />-->
+
+                <input type="file" id="photo" name="photo" accept="image/*" >
+            </div>
+            <div class="inv">
+                <!-- Description  -->
+                <p>Description:</p>
+                <textarea rows="5" cols="80" name="desc" placeholder="Enter Movie Description Here" required>{{mymov[8]}}</textarea>
+            </div>
+
+
+        </div>
+
+        <div class="inv">
+                    <!-- login -->
+                    <input style="background-color: green" type="submit" value="Confirm"/>
+        </div>
+        </form>
+        <div class="inv">
+            <button style="background-color: red" onclick="redirectToDelete({{mymov[0]}})">DELETE MOVIE?</button>
+
+        </div>
+        
+    </div>
+
+            <script>
+        function redirectToDelete(x) {
+            console.log(x);
+            const hi = x.toString();
+
+            var flaskURL = "{{ url_for('delmov', movid=x) }}";
+            // todo: DONE edit where this redirects to and its variable
+            flaskURL = flaskURL + hi;
+            console.log(flaskURL);
+            window.location.href = flaskURL;
+        }
+            </script>
+
+{% endblock %}
+

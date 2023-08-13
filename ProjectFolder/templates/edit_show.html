@@ -1,0 +1,79 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+
+        <div class="inv">
+            <!-- New Show Title -->
+            <h4>Edit Current Show :</h4>
+        </div>
+
+        <form action="#" method="post">
+        <div class="inv">
+            <!-- All options  -->
+            
+            <div class="inv">
+                <!-- venue dropdown -->
+                <p>Venue:</p>
+
+                  <input list="venue" name="venue" value="{{myshow[2]}}">
+                  <datalist id="venue">
+                        {% for i in ven_list %}
+                        <option value="{{i[0]}}">
+                        {% endfor %}
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- movie dropdown  -->
+                <p>Movie:</p>
+
+                  <input list="movie" name="movie" value="{{myshow[1]}}">
+                  <datalist id="movie">
+                        {% for i in mov_list %}
+                        <option value="{{i[0]}}">
+                        {% endfor %}
+                  </datalist>
+            </div>
+            <div class="inv">
+                <p>Date:</p>
+                <input type="date" name="showdate" value="{{myshow[3]}}"/>
+            </div>
+            <div class="inv">
+                <!-- Time dropdown  -->
+                <p>Time:</p>
+                <input type="time" name="showtime" value="{{myshow[4]}}">
+            </div>
+
+
+
+        </div>
+
+        <div class="inv">
+                    <!-- login -->
+                    <input style="background-color: green" type="submit" value="Confirm"/>
+        </div>
+        </form>
+        <div class="inv">
+            <button style="background-color: red" onclick="redirectToDelete({{myshow[0]}})">DELETE SHOW?</button>
+
+        </div>
+    </div>
+
+            <script>
+        function redirectToDelete(x) {
+            console.log(x);
+            const hi = x.toString();
+
+            var flaskURL = "{{ url_for('delshow', showid=x) }}";
+            // todo: DONE edit where this redirects to and its variable
+            flaskURL = flaskURL + hi;
+            console.log(flaskURL);
+            window.location.href = flaskURL;
+        }
+            </script>
+{% endblock %}

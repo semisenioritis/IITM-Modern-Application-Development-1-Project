@@ -1,0 +1,96 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+    {% if showslist |length == 0 %}
+        <div>
+            No shows scheduled
+        </div>
+    {% else %}
+<!--        {{showslist}}-->
+
+        {% for i in showlistlen %}
+
+<!--        {{showindxlist[i]}}-->
+                <div class="inv">
+                    <div class="inv">
+
+                        <h4 style="cursor: pointer" onclick="redirectToVEEN({{showindxlist[i][0][3]}})">🎪  {{showslist[i][0][2]}}</h4>
+<!--                        <h4 style="cursor: pointer" >Venue: {{showslist[i][0][2]}}</h4>-->
+<!--                            {{showindxlist[i]}}-->
+
+
+                    </div>
+                    <br>
+            {% for j in showslist[i] %}
+
+                <div >
+                    <!-- movie1 -->
+
+                    <div class="inv" style="cursor: pointer" onclick="redirectToMOV({{showindxlist[i][0][4]}})" >
+                        <!-- movie title -->
+                        <h5>🎬{{j[1]}}</h5>
+<!--                        {{j}}-->
+                    </div>
+                    <div class="inv">
+                        <!-- movie details -->
+<!--                        {{j}}-->
+                        <div class="inv">📅 Date : {{j[3]}}</div>
+                        <div class="inv">🕐 Time : {{j[4]}}</div>
+                        <div class="inv">📊 Available Seats : {{j[5]}}</div>
+                    </div>
+                    <div class="inv">
+                        <!-- movie booking button -->
+<!--                        movie booking button-->
+
+                        <button onclick="redirectToFlask({{j[0]}})">Book 🎫</button>
+                    </div>
+
+                </div>
+                    <br>
+
+
+            {% endfor %}
+                </div>
+                <br>
+                <br>
+        {% endfor %}
+    {% endif %}
+
+
+    </div>
+<script>
+    function redirectToFlask(x) {
+        console.log(x)
+    const hi= x.toString()
+
+    var flaskURL = {{ url_for('bookingsys',showid=x) }};
+    flaskURL= flaskURL+hi
+        console.log(flaskURL)
+    window.location.href = flaskURL;
+}
+    function redirectToVEEN(x) {
+        console.log(x)
+    const hi= x.toString()
+
+    var flaskURL = {{ url_for('vendisp',venid=x) }};
+    flaskURL= flaskURL+hi
+        console.log(flaskURL)
+    window.location.href = flaskURL;
+}
+
+    function redirectToMOV(x) {
+        console.log(x)
+    const hi= x.toString()
+
+    var flaskURL = {{ url_for('movdisp',movid=x) }};
+    flaskURL= flaskURL+hi
+        console.log(flaskURL)
+    window.location.href = flaskURL;
+}
+</script>
+{% endblock %}

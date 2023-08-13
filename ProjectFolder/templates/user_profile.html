@@ -1,0 +1,179 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+
+        <div class="inv">
+            <!-- Show block -->
+            <h3>&nbsp 🎴 &nbsp My Profile</h3>
+            <br>
+            <br>
+
+            <div class="inv">
+                <!-- show block title -->
+                <h4>📗 My bookings:</h4>
+            </div>
+                {% if my_bookings |length == 0 %}
+                <div> No bookings yet</div>
+                {%else%}
+            <div class="inv">
+                <!-- blocks holder -->
+                {% for i in my_bookings %}
+                <div class="inv">
+                    <!-- show 1 -->
+
+                    📜 <u>Booking {{i[0]}}</u>
+                    <div class="inv flex-container">
+                        <!-- content holder  -->
+                        <div style="width:60%">
+                            <!-- data about show -->
+
+
+                        <div class="inv">
+                            <!-- Venue  -->
+                            🎪 Venue:
+                            {{i[8]}}
+                        </div>
+                        <div class="inv">
+                            <!-- Movie -->
+                            🎬 Movie:
+                            {{i[7]}}
+                        </div>
+                        <div class="inv">
+                            <!-- Date -->
+                            📅 Date:
+                            {{i[9]}}
+                        </div>
+                        <div class="inv">
+                            <!-- time -->
+                            🕑 Time:
+                            {{i[10]}}
+                        </div>
+                        <div class="inv">
+                            <!-- seats booked -->
+                            📮 Seats Booked:
+                            {{i[3]}}
+                        </div>
+                        <div class="inv">
+                            <!-- seats booked -->
+                            💲 Total Price:
+                            {{i[4]}}
+                        </div>
+                        </div>
+                        <div style="width:40%">
+                        <div class="inv">
+                            <!-- rate button  -->
+                            <form style="text-align: right">
+                             ✒Rate the Movie:
+<!--                            {{i[11]}}-->
+                             <input  type="number" id="movr" min="0" max="10" required>
+
+<!--                            <button onclick="redirectToMovRat({{i[11]}})">Rate</button>-->
+                            <button onclick='redirectToMovRat({{i[11]}})'>Rate</button>
+<!--                            todo: DONE take this index and pass it to the route /ratemov. add a 1-10 input field here and a submit button for redirecting-->
+<!--                            todo: DONE also write the function that takes this parameter as an input from /ratemov and then pushes to db-->
+                            </form>
+                        </div>
+                        <div class="inv">
+                            <!-- rate button  -->
+                            <form style="text-align: right">
+                            ✒Rate the Venue:
+<!--                            {{i[12]}}-->
+                            <input type="number" id="venr" min="0" max="10" required>
+
+<!--                            <button onclick="redirectToMovRat({{i[11]}})">Rate</button>-->
+                            <button onclick='redirectToVenRat({{i[12]}})'>Rate</button>
+<!--                            todo: DONE take this index and pass it to the route /ratemov. add a 1-10 input field here and a submit button for redirecting-->
+<!--                            todo: DONE also write the function that takes this parameter as an input from /ratemov and then pushes to db-->
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                <script>
+
+                        function redirectToMovRat(movid) {
+                            x = document.getElementById("movr").value
+                            if (x == '') {
+                            } else {
+
+
+                                var movrats = {
+                                    movid: movid,
+                                    rating: x
+                                }
+                                console.log(movrats)
+
+                                fetch(window.location.origin + "/ratemov/" + String(movid), {
+
+                                    // Adding method type
+                                    method: "POST",
+
+                                    // Adding body or contents to send
+                                    body: JSON.stringify(movrats),
+
+                                    // Adding headers to the request
+                                    headers: {
+                                        "Content-type": "application/json; charset=UTF-8"
+                                    }
+                                })
+                                    .catch(function (error) {
+                                    });
+
+
+
+                            }
+                        }
+
+                        function redirectToVenRat(venid) {
+                            x = document.getElementById("venr").value
+                            if (x == '') {
+                            } else {
+
+
+                                var venrats = {
+                                    venid: venid,
+                                    rating: x
+                                }
+                                console.log(venrats)
+
+                                fetch(window.location.origin + "/rateven/" + String(venid), {
+
+                                    // Adding method type
+                                    method: "POST",
+
+                                    // Adding body or contents to send
+                                    body: JSON.stringify(venrats),
+
+                                    // Adding headers to the request
+                                    headers: {
+                                        "Content-type": "application/json; charset=UTF-8"
+                                    }
+                                })
+                                    .catch(function (error) {
+                                    });
+
+
+
+                            }
+                        }
+                </script>
+
+                </div>
+                <br>
+                <br>
+                {% endfor %}
+
+            </div>
+                {% endif %}
+        </div>
+
+
+
+    </div>
+
+
+{% endblock %}

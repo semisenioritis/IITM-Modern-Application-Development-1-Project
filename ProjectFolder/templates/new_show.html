@@ -1,0 +1,63 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+
+        <div class="inv">
+            <!-- New Show Title -->
+            Create a New Show :
+        </div>
+
+        <form action="#" method="post">
+        <div class="inv">
+            <!-- All options  -->
+            
+            <div class="inv">
+                <!-- venue dropdown -->
+                <p>Venue:</p>
+
+                  <input list="venue" name="venue">
+                  <datalist id="venue">
+                        {% for i in ven_list %}
+                        <option value="{{i[0]}}">
+                        {% endfor %}
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- movie dropdown  -->
+                <p>Movie:</p>
+
+                  <input list="movie" name="movie">
+                  <datalist id="movie">
+                        {% for i in mov_list %}
+                        <option value="{{i[0]}}">
+                        {% endfor %}
+                  </datalist>
+            </div>
+            <div class="inv">
+                <p>Date:</p>
+                <input type="date" name="showdate" />
+            </div>
+            <div class="inv">
+                <!-- Time dropdown  -->
+                <p>Time:</p>
+                <input type="time" name="showtime">
+            </div>
+
+
+
+        </div>
+
+        <div class="inv">
+                    <!-- login -->
+                    <input style="background-color: green" type="submit" value="Confirm"/>
+        </div>
+        </form>
+        
+    </div>
+{% endblock %}

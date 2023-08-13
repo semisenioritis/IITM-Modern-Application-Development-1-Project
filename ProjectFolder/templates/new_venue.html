@@ -1,0 +1,64 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+
+        <div class="inv">
+            <!-- New Venue Title -->
+            <h4>Add a New Venue :</h4>
+        </div>
+        <form action="#" enctype="multipart/form-data" method="post">
+        <div class="inv">
+            <!-- All options  -->
+
+            <div class="inv">
+                <!-- venue name -->
+                <p>Name:</p>
+                <input type="text" name="vnam" required/>
+            </div>
+            <div class="inv">
+                <!-- Capacity  -->
+                <p>Capacity:</p>
+                <input type="number" name="capacity" min="1" required>
+            </div>
+            <div class="inv">
+                <!-- Rating  -->
+                <p>Rating (/10):</p>
+                <input type="number" name="rating" min="1" max="10" required>
+            </div>
+            <div class="inv">
+                <!-- Address  -->
+                <p>Address:</p>
+<!--                <input type="text" name="add" required/>-->
+                <textarea rows="3" cols="40" name="add" placeholder="Enter Address Here" required></textarea>
+            </div>
+            <div class="inv">
+                <!-- Photo  -->
+                <p>Photo: (Optional)</p>
+<!--                <input type="file" name="photo" accept="image/*" />-->
+<!--                <input type="file" accept="image/*" />-->
+                <input type="file" id="photo" name="photo" accept="image/*" >
+            </div>
+            <div class="inv">
+                <!-- Description  -->
+                <p>Description:</p>
+                <textarea rows="5" cols="80" name="desc" placeholder="Enter Venue Description Here" required></textarea>
+            </div>
+
+
+        </div>
+
+        <div class="inv">
+                    <!-- login -->
+                    <input style="background-color: green" type="submit" value="Confirm"/>
+        </div>
+        </form>
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+div{
+    border: 1px solid rgb(255, 255, 255, 0.1);
+    color: white;
+    margin: 3px;
+    padding: 4px;
+}
+
+body{
+    background-color: black;
+}
+
+.web_image_actual{
+    height: 30.6vw;
+    width: 33.4vw;
+    object-fit: contain;
+    margin:auto;
+}
+
+.righter{
+  position: relative;
+    float: right;
+    left:-100px;
+
+}
+.flex-container{
+      display: flex;
+}
+.thick {
+  border-radius: 1px;
+  box-shadow: 0px 0px 0px 3px rgba(255,255,255,0.25);
+}
+.inv {
+    border-width: 0px;
+    border: 1px solid rgba(255, 0, 0, 0);
+}
+
+.centerer{
+    margin: auto;
+}

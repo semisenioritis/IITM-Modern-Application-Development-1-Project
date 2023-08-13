@@ -1,0 +1,101 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+        <br>
+        <br>
+        
+
+        <div class="inv">
+            <!-- New Movie Title -->
+            <h4>Add a New Movie:</h4>
+        </div>
+        <form action="#" enctype="multipart/form-data" method="post">
+        <div class="inv">
+            <!-- All options  -->
+            
+            <div class="inv">
+                <!-- movie name -->
+                <p>Name:</p>
+                <input type="text" name="mnam" required/>
+            </div>
+            <div class="inv">
+                <!-- Genre  -->
+                <p>Genre:</p>
+
+                  <input list="genres" name="genres" >
+                  <datalist id="genres" name="genres" required >
+                      <option value="Action">
+                      <option value="Adventure">
+                      <option value="Drama">
+                      <option value="Romcom">
+                      <option value="Thriller">T
+                      <option value="Horror">
+                      <option value="Comedy">
+                      <option value="Sci-Fi">
+                      <option value="Mystery">
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Rating  -->
+                <p>Rating (/10):</p>
+                <input type="number" name="rating" min="1" max="10" required>
+            </div>
+            <div class="inv">
+                <!-- Tags dropdown -->
+                <p>Tags</p>
+                <input list="tags" name="tags" required>
+                  <datalist id="tags" name="tags"required >
+                      <option value="Family">Family</option>
+                      <option value="Pg13">Pg13</option>
+                      <option value="Pg13">Pg13</option>
+                      <option value="Anime">Anime</option>
+                      <option value="Animation">Animation</option>
+                      <option value="Art Film">Art Film</option>
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Lang  -->
+                <p>Language:</p>
+                <input list="lang" name="lang" required>
+                  <datalist id="lang" name="lang" required >
+                      <option value="English">English</option>
+                      <option value="Hindi">Hindi</option>
+                      <option value="Marathi">Marathi</option>
+                      <option value="French">French</option>
+                      <option value="Japanese">Japanese</option>
+                  </datalist>
+            </div>
+            <div class="inv">
+                <!-- Price  -->
+                <p>Price:</p>
+                <input type="number" name="price" min="0" required>
+            </div>
+            <div class="inv">
+                <!-- Photo  -->
+                <p>Photo: (Optional)</p>
+<!--                <input type="file" name="photo" accept="image/*" />-->
+<!--                <input type="file" accept="image/*" />-->
+                <input type="file" id="photo" name="photo" accept="image/*" >
+            </div>
+            <div class="inv">
+                <!-- Description  -->
+                <p>Description:</p>
+                <textarea rows="5" cols="80" name="desc" placeholder="Enter Movie Description Here" required></textarea>
+            </div>
+
+
+        </div>
+
+        <div class="inv">
+                    <!-- login -->
+                    <input style="background-color: green" type="submit" value="Confirm"/>
+        </div>
+        </form>
+        
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+<div style="text-align: center" class="inv">
+  <h3>📊Summary</h3>
+<br>
+  <br>
+
+  <div class="flex-container inv" >
+    <div style="width:50%;text-align: center" class="inv">
+      <h5>🎬 Movies Overview:</h5>
+      <div class="inv">
+        <img class="web_image_actual" src="../static/moviegraph.png" />
+      </div>
+    </div>
+    <div style="width:50%;text-align: center" class="inv">
+      <h5>🎪 Venue Overview:</h5>
+      <div class="inv">
+        <img class="web_image_actual" src="../static/venuegraph.png" />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

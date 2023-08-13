@@ -1,0 +1,95 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+
+
+
+<div class="inv">
+<!--    main holder-->
+
+    <div class="inv">
+
+       <h3>🎬 {{mymov[1]}}</h3>
+    </div>
+    <div class="flex-container inv">
+
+        <div style="width: 600px">
+    <div class="inv">
+        ℹ️ Description:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{mymov[8]}}
+
+    </div>
+    <div class="inv">
+        🎭 Genre:
+        <br>
+         &nbsp&nbsp&nbsp&nbsp
+        {{mymov[2]}}
+    </div>
+    <div class="inv">
+        ⭐ Critics Rating:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{mymov[3]}}
+    </div>
+    <div class="inv">
+        🌟 Our rating:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{our_rating}}
+    </div>
+    <div class="inv">
+        🏷️ Tags:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{mymov[4]}}
+    </div>
+    <div class="inv">
+        🌎 Language:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{mymov[5]}}
+    </div>
+    <div class="inv">
+        💲 Ticket Price:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        ₹{{mymov[6]}}
+    </div>
+        </div>
+    <div style="justify-content: flex-end;">
+        <img class="web_image_actual" src="../{{photopath}}" />
+    </div>
+    </div>
+        <br>
+        <br>
+    <div class="inv">
+
+    {% if showslist |length == 0 %}
+        <div>
+            No shows scheduled
+            <div><h1>🤷</h1></div>
+        </div>
+    {% else %}
+        <h4>Currently playing at :</h4>
+<!--        {{showslist}}-->
+        {% for i in showslist %}
+        <div class="inv">
+            <h4>🎪 {{i[0][2]}}</h4>
+        </div>
+
+            {% for j in i %}
+                    <div>
+                        🎭 Show
+                        <div class="inv">📅 Date: {{j[3]}}</div>
+                        <div class="inv">🕐 Time: {{j[4]}}</div>
+                        <div class="inv">📋 Available Seats: {{j[5]}}</div>
+                    </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

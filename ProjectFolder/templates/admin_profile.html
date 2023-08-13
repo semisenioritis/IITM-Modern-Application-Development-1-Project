@@ -1,0 +1,198 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <div class="inv">
+        <!-- main body holder -->
+
+
+        <form action="{{ url_for('summary') }}">
+            <br>
+            <h3> &nbsp &nbsp <u>Your Dashboard</u> 🍱 </h3>
+        <span>
+        <button class="righter" onclick="redirectToSum()">Dashboard 📊</button>
+        </span>
+        </form>
+        <br>
+
+        <div class="inv">
+            <!-- venue block -->
+
+            <div class="inv">
+                <!-- Venue block title -->
+                <h4>Current Venues:</h4>
+            </div>
+            {% if venuelist |length == 0 %}
+            <div> No venues yet </div>
+            <div><h1>🤷</h1></div>
+            {%else%}
+            <div class="inv">
+
+                <!-- blocks holder -->
+                {% for i in venuelist %}
+                <div>
+                    <!-- Venue 1 -->
+                    🎪{{i[1]}}
+                    <div class="inv">
+                        <!-- content holder  -->
+                        <div class="inv">
+                            <!-- Address -->
+                            📍 Address: {{i[4]}}
+                        </div>
+                        <div class="inv">
+                            ⭐ Rating: {{i[3]}}
+                            <!-- rating  -->
+                        </div>
+                        <div class="inv">
+                            <!-- Capacity -->
+                            🧮Capacity: {{i[2]}}
+                        </div>
+                        <div class="inv">
+                            <!-- Button -->
+                            <button onclick="redirectToEditVenue({{i[0]}})">Edit ✏️</button>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+                 {% endfor %}
+
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="inv">
+            <!-- add New -->
+            <button onclick="redirectToVenue()">➕ New Venue</button>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="inv">
+            <!-- movie block -->
+
+            <div class="inv">
+                <!-- Venue block title -->
+
+                <h4>Current Movies:</h4>
+            </div>
+            {% if movielist |length == 0 %}
+            <div> No movies yet</div>
+            <div><h1>🤷</h1></div>
+            {%else%}
+            <div class="inv">
+                <!-- blocks holder -->
+                {% for k in movielist %}
+                <div >
+                    <!-- Movie 1 -->
+                    🎬 {{k[1]}}
+                    <div class="inv">
+                        <!-- content holder  -->
+                        <div class="inv">
+                            <!-- Genre -->
+                            🍿 Genre: {{k[2]}}
+                        </div>
+                        <div class="inv">
+                            ⭐ Rating: {{k[3]}}
+                            <!-- rating  -->
+                        </div>
+                        <div class="inv">
+                            <!-- Language -->
+                            🎭 Language: {{k[5]}}
+                        </div>
+                        <div class="inv">
+                            <!-- Tags -->
+                            🏷️ Tags: {{k[4]}}
+                        </div>
+                        <div class="inv">
+                            <!-- Price -->
+                            💰 Price: {{k[6]}}
+                        </div>
+                        <div class="inv">
+                            <button onclick="redirectToEditMovie({{k[0]}})">Edit ✏️</button>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                {% endfor %}
+
+            </div>
+            {% endif %}
+        </div>
+
+
+        <div class="inv">
+            <!-- add New -->
+            <button onclick="redirectToMovie()">➕ New Moive</button>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="inv">
+    <div class="inv">
+                <h4>Current Shows:</h4>
+    </div>
+            {% if showslist |length == 0 %}
+            <div> No shows yet</div>
+            <div><h1>🤷</h1></div>
+            {%else%}
+
+{% for i in showslist %}
+                <div class="inv">
+
+                    <div class="inv">
+
+                       <h5> 🎪 Venue: {{i[0][2]}}</h5>
+                    </div>
+                    <br>
+            {% for j in i %}
+                <div>
+                    <!-- movie1 -->
+
+                    <div class="inv">
+                        <!-- movie title -->
+                        🎬 {{j[1]}}
+                    </div>
+                    <div class="inv">
+                        <!-- movie details -->
+<!--                        {{j}}-->
+                        <div class="inv">📅 Date: {{j[3]}}</div>
+                        <div class="inv">🕐 Time: {{j[4]}}</div>
+                        <div class="inv">💰 Price: {{j[5]}}</div>
+                    </div>
+                    <div class="inv">
+                        <!-- movie booking button -->
+                        <button onclick="redirectToEditShow({{j[0]}})">Edit ✏️</button>
+                    </div>
+
+                </div>
+                    <br>
+
+
+            {% endfor %}
+                </div>
+
+        {% endfor %}
+            {% endif %}
+
+
+
+    </div>
+        <div class="inv">
+            <!-- add New -->
+            <button onclick="redirectToShow()">➕ New Show</button>
+        </div>
+
+        
+
+    </div>
+
+{% endblock %}

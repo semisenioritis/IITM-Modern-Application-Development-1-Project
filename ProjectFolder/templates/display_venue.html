@@ -1,0 +1,83 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+
+
+
+<div class="inv">
+<!--    main holder-->
+
+    <div class="inv">
+
+        <h3> 🎪 {{myven[1]}}</h3>
+    </div>
+    <div class="flex-container inv">
+
+        <div style="width: 600px">
+    <div class="inv">
+        ℹ️ Description:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{myven[6]}}
+    </div>
+    <div class="inv">
+        🧮 Capacity:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{myven[2]}}
+    </div>
+    <div class="inv">
+        ⭐ Rating:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{myven[3]}}
+    </div>
+    <div class="inv">
+        🌟 Our rating:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{our_rating}}
+    </div>
+    <div class="inv">
+        📍 Address:
+        <br>
+        &nbsp&nbsp&nbsp&nbsp
+        {{myven[4]}}
+    </div>
+        </div>
+    <div>
+        <img class="web_image_actual" src="../{{photopath}}" />
+    </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="inv">
+
+    {% if showslist |length == 0 %}
+        <div>
+            No shows scheduled
+            <div><h1>🤷</h1></div>
+        </div>
+    {% else %}
+        <h4>Shows playing here:</h4>
+
+        {% for j in showslist[0] %}
+<!--        {{j}}-->
+        <div>
+        🎭 Show:
+                        <div class="inv">🎬 Movie: {{j[1]}}</div>
+                        <div class="inv">📅 Date: {{j[3]}}</div>
+                        <div class="inv">🕐 Time: {{j[4]}}</div>
+                        <div class="inv">📋 Available Seats: {{j[5]}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+
+
+   <h5>     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 🔍 Results close to "{{query}}":</h5>
+<!--<br>-->
+
+
+<div class="inv">
+    <div class="inv"><h3>🎬 Movies:</h3></div>
+    <br>
+    {% for i in movie_details %}
+        <div>
+            <div class="inv"><h4>🎬 {{i[1]}}</h4></div>
+            <div class="inv">📚 Genre: {{i[2]}}</div>
+            <div class="inv">⭐ Rating: {{i[3]}}</div>
+            <div class="inv">🏷️ Tags: {{i[4]}}</div>
+            <div class="inv">🌎 Language: {{i[5]}}</div>
+            <div class="inv">💰 Price: ₹ {{i[6]}}</div>
+        </div>
+
+    {% endfor %}
+
+
+</div>
+<br>
+<br>
+<div>
+    <div class="inv"><h3>🎪 Venues:</h3></div>
+    <br>
+    {% for i in venue_details %}
+<!--    {{i}}-->
+        <div>
+            <div class="inv"><h4>🎪 {{i[1]}}</h4></div>
+            <div class="inv">📊 Capacity: {{i[2]}}</div>
+            <div class="inv">⭐ Rating: {{i[3]}}</div>
+            <div class="inv">📍 Address: {{i[4]}}</div>
+        </div>
+    {% endfor %}
+
+</div>
+<br>
+<br>
+<div>
+    <div class="inv"><h3>🎭 Shows:</h3></div>
+
+        <br>
+    {% for i in show_details %}
+<!--    {{i}}-->
+
+
+        <div>
+            <div class="inv">🎬 Movie: {{i[1]}}</div>
+            <div class="inv">🎪 Venue: {{i[2]}}</div>
+            <div class="inv">📅 Date: {{i[3]}}</div>
+            <div class="inv">🕐 Time: {{i[4]}}</div>
+            <div class="inv">💰 Price: ₹ {{i[5]}}</div>
+        </div>
+
+
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
